@@ -2,9 +2,10 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    jest: true
   },
   extends: [
-    'airbnb-base',
+    'airbnb',
     'prettier',
     'prettier/react'
   ],
@@ -45,6 +46,13 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'react-native/no-raw-text': 'off',
     'react/jsx-one-expression-per-line': 'off',
-    'no-unused-vars': "off"
+    'react/jsx-props-no-spreading': 'off'
   },
+  settings: {
+    "import/resolver": {
+      "babel-plugin-root-import": {
+        rootPathSuffix: "src"
+      }
+    }
+  }
 };
