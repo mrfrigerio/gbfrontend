@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
@@ -10,7 +11,7 @@ export default createGlobalStyle`
   box-sizing: border-box;
   font-family: Roboto, sans-serif;
 
-  :focus {
+  &:focus {
     outline: 0;
   }
 
@@ -24,7 +25,7 @@ body {
   -webkit-font-smoothing: antialiased
 }
 
-body, imput, button {
+body, input, button, small {
   font: 14px, Roboto, sans-serif;
 }
 
