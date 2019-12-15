@@ -4,8 +4,6 @@ import {
   subDays,
   addDays,
   setHours,
-  setMinutes,
-  setSeconds,
   isBefore,
   isEqual,
   parseISO,
@@ -33,12 +31,12 @@ export default function Dashboard() {
         params: { date }
       })
       const data = range.map(hour => {
-        const checkDate = setSeconds(setMinutes(setHours(date, hour), 0), 0)
+        const checkDate = startOfHour(setHours(date, hour))
         return {
           time: `${hour}:00`,
           past: isBefore(checkDate, new Date()),
           appointment: response.data.find(a =>
-            isEqual(startOfHour(parseISO(a.date)), startOfHour(checkDate))
+            isEqual(parseISO(a.date), checkDate)
           )
         }
       })
