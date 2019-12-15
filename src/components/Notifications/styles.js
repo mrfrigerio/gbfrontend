@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components'
-import { lighten } from 'polished'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import 'react-perfect-scrollbar/dist/css/styles.css'
 
@@ -28,10 +27,12 @@ export const Badge = styled.button`
 `
 export const NotificationList = styled.div`
   position: absolute;
-  width: 260px;
-  left: calc(50% - 130px);
+  z-index: 10;
+  display: ${props => (props.visible ? 'block' : 'none')};
+  width: 360px;
+  left: calc(50% - 180px);
   top: calc(100% + 30px);
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8);
   border-radius: 4px;
   padding: 15px 5px;
 
@@ -44,11 +45,14 @@ export const NotificationList = styled.div`
     top: -20px;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-bottom: 20px solid rgba(0, 0, 0, 0.6);
+    border-bottom: 20px solid rgba(0, 0, 0, 0.8);
   }
 `
 export const Notification = styled.div`
   color: #fff;
+  display: flex;
+  align-items: stretch;
+  justify-content: flex-start;
 
   & + div {
     margin-top: 15px;
@@ -64,13 +68,15 @@ export const Notification = styled.div`
   time {
     font-size: 12px;
     opacity: 0.6;
+    margin-left: 5px;
   }
 
   button {
     font-size: 12px;
     border: none;
-    background: none;
-    color: ${lighten(0.2, '#7159c1')};
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #7159c1;
     padding: 0 5px;
     margin: 0 5px;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
@@ -79,12 +85,11 @@ export const Notification = styled.div`
   ${props =>
     props.unread &&
     css`
-      &::after {
+      &::before {
         content: '';
-        display: inline-block;
-        margin-left: 5px;
-        width: 8px;
-        height: 8px;
+        align-self: flex-start;
+        margin: 5px;
+        padding: 3px;
         background: #ff892e;
         border-radius: 50%;
       }
